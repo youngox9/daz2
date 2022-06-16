@@ -1,0 +1,221 @@
+@import 'utilities';
+@font-face {
+  font-family: 'cwTeXHei';
+  font-style: normal;
+  font-weight: 500;
+  src: url(//fonts.gstatic.com/ea/cwtexhei/v3/cwTeXHei-zhonly.eot);
+  src: url(//fonts.gstatic.com/ea/cwtexhei/v3/cwTeXHei-zhonly.eot?#iefix) format('embedded-opentype'), url(//fonts.gstatic.com/ea/cwtexhei/v3/cwTeXHei-zhonly.woff2) format('woff2'), url(//fonts.gstatic.com/ea/cwtexhei/v3/cwTeXHei-zhonly.woff) format('woff'), url(//fonts.gstatic.com/ea/cwtexhei/v3/cwTeXHei-zhonly.ttf) format('truetype');
+}
+
+// 
+* {
+  appearance: none;
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  font-family: 'cwTeXHei', 'Microsoft JhengHei', 'Helvetica', 'Arial', 'sans-serif'; // font-family: 'Microsoft JhengHei', 'Helvetica', 'Arial', 'sans-serif';
+  // -webkit-user-select: none;
+  // -moz-user-select: none;
+  // -ms-user-select: none;
+  // user-select: none;
+  -webkit-tap-highlight-color: transparent; // -webkit-touch-callout: none;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+html,
+body {
+  color: $root-black;
+  font-size: 1.3rem;
+  overflow: hidden; // overflow-y: auto;
+  height: 100%;
+  position: fixed;
+  width: 100%;
+  min-width: 480px; // min-height: 320px;
+  color: $root-black;
+  background-color: black;
+}
+
+body {
+  min-width: 320px;
+}
+
+.container {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  overflow: visible;
+  >.content {
+    display: block;
+    margin: 0 auto;
+    padding: 12px;
+    max-width: $lg;
+    overflow: visible;
+  }
+}
+
+.d {
+  @media (max-width: $md) {
+    display: none !important;
+  }
+}
+
+.m {
+  @media (min-width: $md) {
+    display: none !important;
+  }
+}
+
+img {
+  height: auto;
+}
+
+.pc-blur {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 99999;
+  background: url("../img/pc.jpg") center/cover no-repeat;
+}
+
+.daz-btn {
+  padding: 0;
+  display: block;
+  background: none;
+  box-shadow: none;
+  width: 40%;
+  border: none;
+  border-radius: 0;
+  border-radius: 2em;
+  overflow: hidden;
+  -webkit-appearance: none;
+  cursor: pointer;
+  transition: 0.3s ease all;
+  background-image: linear-gradient(to left, rgba(204, 87, 116, 1) 0%, rgba(240, 158, 170, 1) 100%);
+  &:hover {
+    transform: scale(1.08);
+    opacity: 0.86;
+  }
+  &.daz-orange {
+    background-image: linear-gradient(to left, #ca7055 0%, #f2c1a6 100%);
+  }
+  &.daz-gray {
+    background-image: none;
+    background-color: #b5b5b5;
+  }
+  >p {
+    color: white;
+    text-align: center;
+    font-size: 1.1em;
+    font-weight: bolder;
+    text-decoration: none;
+    margin: 0;
+    letter-spacing: 0.02em;
+    line-height: 2.5;
+    padding: 0 2%;
+  }
+  >img {
+    display: block;
+    width: 100%;
+  }
+}
+
+.swal-modal {
+  max-width: 80%;
+  .swal-title {
+    font-size: 28px;
+  }
+  .swal-text {
+    font-size: 18px;
+    text-align: center;
+    line-height: 1.5;
+  }
+}
+
+.checkbox-wrap {
+  width: 24px;
+  height: 24px;
+  border: 1px solid #c74e6e;
+  display: block;
+  position: relative;
+  background-color: #ffffff;
+  >input {
+    z-index: 3;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    &:checked+.check {
+      opacity: 1;
+      animation: bounceIn 0.6s 0s 1 both;
+    }
+  }
+  >.check {
+    z-index: 2;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: 0.3s ease all;
+    border-radius: 6px;
+    background: url("../img/check_icon.png") center/contain no-repeat;
+    cursor: pointer;
+  }
+}
+
+.form {
+  &.animating {
+    animation: fadeIn 1.2s 0.6s 1 both;
+  }
+  .valid {
+    display: block;
+    color: #c74e6e;
+    text-align: center;
+    font-size: 0.8em;
+    position: absolute;
+    width: 100%;
+    top: 110%;
+  }
+  .row {
+    margin-bottom: 1.5em;
+    .col {
+      p {
+        font-size: 1.6em; // color: #6a6a6a;
+        margin: 0;
+        letter-spacing: 0.12em;
+      }
+    }
+  }
+  input {
+    border-radius: 2em;
+    line-height: 2em;
+    width: 100%;
+    padding: 0 6%;
+    box-shadow: inset 0px 2px 8px #dddada;
+    border: none;
+    &.error {
+      box-shadow: 0px 0px 16px #ffc107;
+      -webkit-box-shadow: 0px 0px 16px #ffc107;
+    }
+  }
+  .protect {
+    font-size: 0.8em;
+    line-height: 1.2em;
+    >span {
+      text-decoration: underline;
+    }
+  }
+}
